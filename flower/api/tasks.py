@@ -479,6 +479,8 @@ List tasks
         limit = self.get_argument('limit', None)
         worker = self.get_argument('workername', None)
         type = self.get_argument('taskname', None)
+        args = self.get_argument('args', None)
+        kwargs = self.get_argument('kwargs', None)
         state = self.get_argument('state', None)
         received_start = self.get_argument('received_start', None)
         received_end = self.get_argument('received_end', None)
@@ -491,6 +493,7 @@ List tasks
         result = []
         for task_id, task in tasks.iter_tasks(
                 app.events, limit=limit, type=type,
+                args=args, kwargs=kwargs,
                 worker=worker, state=state,
                 received_start=received_start,
                 received_end=received_end):
